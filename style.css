@@ -57,7 +57,7 @@
   .currency {
     width: 66px;
     height: 28px;
-    color: C6C6C6;
+    color: #C6C6C6;
     border: none;
   }
   .currency:hover {
@@ -67,5 +67,11 @@
   input {
       width: 270px;
       height: 102px;
+      font-size: 36px;
+      font-weight: bold;
+  }
+input::placeholder {
+    font-size: 12px;
+    color: grey;
   }
 }
