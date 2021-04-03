@@ -53,13 +53,14 @@
   .currencyButtons {
     height: 30px;
   }
-  .currency {
+  .currencyTo, .currencyFrom {
     width: 66px;
     height: 28px;
     color: #C6C6C6;
-    border: none;
+    border: grey;
+    background-color: white;
   }
-  .currency:hover {
+  .currencyTo:hover, .currencyFrom:hover {
       background-color: #833AE0;
       color: white;
   }
