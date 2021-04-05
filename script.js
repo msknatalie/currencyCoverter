@@ -45,10 +45,10 @@ window.addEventListener("load", () => {
   currencyButtonRub.classList.add("select");
   currencyButUsd.classList.add("select");
   inputSell.value = 1;
-  converter(secondCurrency, firstCurrency); //не работает
-  currentRateRight.innerText = `1 USD = ${curRate} RUB`; //не работает
-  converter(firstCurrency, secondCurrency);
-  currentRateLeft.innerText = `1 RUB = ${curRate} USD`; //не работает
+  converter(firstCurrency, secondCurrency).then(() => {
+    currentRateLeft.innerText = `1 RUB = ${curRate} USD`;
+    currentRateRight.innerText = `1 USD = ${1 / curRate} RUB`;
+  });
   })
 
 // Изменение инпута
@@ -57,23 +57,22 @@ inputBuy.addEventListener("keyup", updateSellValue);
 
 // Кнопки валют
 currencyButtonFrom.forEach((currencyFrom) => {
-    currencyFrom.addEventListener("click", () => {
-      currencyFrom.classList.add("unselect"); //не работает
+    currencyFrom.addEventListener("click", (e) => {
+      currencyButtonFrom.forEach((currencyFrom) => {
+        currencyFrom.classList.remove("select");
+      });
+      e.target.classList.add("select");
       switch (currencyFrom.innerText) {
         case "RUB":
-          currencyFrom.classList.add("select");
           firstCurrency = rub;
           break
         case "USD":
-          currencyFrom.classList.add("select");
           firstCurrency = usd;
           break
         case "EUR":
-          currencyFrom.classList.add("select");
           firstCurrency = eur;
           break
         case "GBP":
-          currencyFrom.classList.add("select");
           firstCurrency = gbp;
           break
       };
@@ -84,11 +83,14 @@ currencyButtonFrom.forEach((currencyFrom) => {
       };
       currentRateLeft.innerText = `1 ${currencyFrom.innerText} = ${curRate} ${secondCurrency}`;
     });
-  });
+    });
 
 currencyButtonTo.forEach((currencyTo) => {
-    currencyTo.addEventListener("click", () => {
-      currencyTo.classList.add("unselect"); //не работает
+    currencyTo.addEventListener("click", (e) => {
+      currencyButtonTo.forEach((currencyTo) => {
+        currencyTo.classList.remove("select");
+      });
+      e.target.classList.add("select");
       switch (currencyTo.innerText) {
         case "RUB":
           currencyTo.classList.add("select");
@@ -112,6 +114,6 @@ currencyButtonTo.forEach((currencyTo) => {
       } else {
         converter(firstCurrency, secondCurrency);
       };
-      currentRateRight.innerText = `1 ${currencyTo.innerText} = ${curRate} ${firstCurrency}`;
+      currentRateRight.innerText = `1 ${currencyTo.innerText} = ${curRate} ${firstCurrency}`; //неверно
     });
   })
