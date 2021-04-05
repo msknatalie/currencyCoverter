@@ -10,7 +10,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    
   }
   img {
     height: 23px;
@@ -35,8 +34,6 @@
     height: 33px;
     width: 58px;
     border: none;
-  }
-  main {
   }
   h1 {
     font-size: 36px;
@@ -73,4 +70,16 @@
 input::placeholder {
     font-size: 12px;
     color: grey;
+  }
+  #currentRateOne {
+    
+  }
+  #currentRateTwo {
+
+  }
+  .select {
+    background-color: #833AE0;
+  }
+  .unselect {
+    background-color: white;
   }
