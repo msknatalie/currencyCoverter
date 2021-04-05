@@ -114,6 +114,6 @@ currencyButtonTo.forEach((currencyTo) => {
       } else {
         converter(firstCurrency, secondCurrency);
       };
-      currentRateRight.innerText = `1 ${currencyTo.innerText} = ${curRate} ${firstCurrency}`; //неверно
+      currentRateRight.innerText = `1 ${currencyTo.innerText} = ${1 / curRate} ${firstCurrency}`; //неверно
     });
   })

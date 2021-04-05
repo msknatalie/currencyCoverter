@@ -1,85 +1,92 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
-  body {
-    font-family: Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
-      "Helvetica Neue", sans-serif;
-  }
-  header {
-    height: 50px;
-    background-color: #f5f5f6;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  img {
-    height: 23px;
-    width: 89px;
-  }
-  .headerButtons {
-    display: flex;
-    justify-content: space-between;
-    width: 70%;
-  }
-  .head {
-    margin-right: 20px;
-    height: 19px;
-    border: none;
-    color: #959BA4;
-  }
-  .head:hover {
-      color: black;
-  }
-  .login {
-    background-color: white;
-    height: 33px;
-    width: 58px;
-    border: none;
-  }
-  h1 {
-    font-size: 36px;
-    text-align: center; /* Нужно сдвинуть влево */
-  }
-  .converter {
-    display: flex;
-    justify-content: space-evenly;
-  }
-  p {
-    font-size: 12px;
-    color: #9f9f9f;
-  }
-  .currencyButtons {
-    height: 30px;
-  }
-  .currencyTo, .currencyFrom {
-    width: 66px;
-    height: 28px;
-    color: #C6C6C6;
-    border: grey;
-    background-color: white;
-  }
-  .currencyTo:hover, .currencyFrom:hover {
-      background-color: #833AE0;
-      color: white;
-  }
-  input {
-      width: 270px;
-      height: 102px;
-      font-size: 36px;
-      font-weight: bold;
-  }
-input::placeholder {
-    font-size: 12px;
-    color: grey;
-  }
-  #currentRateOne {
-    
-  }
-  #currentRateTwo {
-
-  }
-  .select {
-    background-color: #833AE0;
-  }
-  .unselect {
-    background-color: white;
-  }
+body {
+  font-family: Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+    sans-serif;
+}
+header {
+  height: 50px;
+  background-color: #f5f5f6;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+img {
+  height: 23px;
+  width: 89px;
+}
+.headerButtons {
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+}
+.head {
+  margin-right: 20px;
+  height: 19px;
+  border: none;
+  color: #959ba4;
+}
+.head:hover {
+  color: black;
+}
+.login {
+  background-color: white;
+  height: 33px;
+  width: 58px;
+  border: none;
+}
+h1 {
+  font-size: 36px;
+  text-align: center; /* Нужно сдвинуть влево */
+}
+.converter {
+  display: flex;
+  justify-content: space-evenly;
+}
+p {
+  font-size: 12px;
+  color: #9f9f9f;
+}
+.currencyButtons {
+  height: 30px;
+}
+.currencyTo,
+.currencyFrom {
+  width: 66px;
+  height: 28px;
+  color: #c6c6c6;
+  border: grey;
+  background-color: white;
+}
+.currencyTo:hover,
+.currencyFrom:hover {
+  background-color: #833ae0;
+  color: white;
+}
+input {
+  width: 250px;
+  height: 70px;
+  font-size: 36px;
+  font-weight: bold;
+  border: aliceblue;
+  padding-left: 10px;
+}
+.inputContainer {
+  width: 270px;
+  height: 102px;
+  border: 1px solid #E5E5E5;
+  box-sizing: border-box;
+  border-radius: 3px;
+}
+#currentRateOne,
+#currentRateTwo {
+  width: 190px;
+  height: 28px;
+  padding-left: 10px;
+}
+.select {
+  background-color: #833ae0;
+}
+.unselect {
+  background-color: white;
+}
