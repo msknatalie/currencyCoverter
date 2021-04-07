@@ -20,16 +20,18 @@ async function converter(cur1, cur2) {
   );
   const data = await response.json();
   curRate = Number(data.rates[cur2]);
-  inputBuy.value = inputSell.value * curRate;
+  inputBuy.value = Number(inputSell.value * curRate).toFixed(4);
   return curRate;
 }
 
 function updateBuyValue(e) {
-    return inputBuy.value = e.target.value * curRate;
+    inputBuy.value = Number(e.target.value * curRate).toFixed(4);
+    return inputBuy.value;
   }
 
   function updateSellValue(e) {
-    return inputSell.value = e.target.value / curRate;
+    inputSell.value = Number(e.target.value / curRate).toFixed(4);
+    return inputSell.value;
   }
 
 // Кнопки первого инпута:
@@ -46,9 +48,13 @@ window.addEventListener("load", () => {
   currencyButUsd.classList.add("select");
   inputSell.value = 1;
   converter(firstCurrency, secondCurrency).then(() => {
-    currentRateLeft.innerText = `1 RUB = ${curRate} USD`;
-    currentRateRight.innerText = `1 USD = ${1 / curRate} RUB`;
-  });
+    currentRateLeft.innerText = `1 RUB = ${curRate.toFixed(4)} USD`;
+    let rate = 1 / curRate;
+    currentRateRight.innerText = `1 USD = ${rate.toFixed(4)} RUB`;
+  })
+  .catch((err) => {
+    alert("Нет сети!", err);
+  })
   })
 
 // Изменение инпута
@@ -77,11 +83,19 @@ currencyButtonFrom.forEach((currencyFrom) => {
           break
       };
       if (firstCurrency === secondCurrency) {
-        inputSell.value = inputBuy.value;
+        inputSell.value = Number(inputBuy.value).toFixed(4);
+        currentRateLeft.innerText = `1 ${currencyFrom.innerText} = 1 ${secondCurrency}`;
+        currentRateRight.innerText = `1 ${secondCurrency} = 1 ${firstCurrency}`;
       } else {
-        converter(firstCurrency, secondCurrency);
+        converter(firstCurrency, secondCurrency).then(() => {
+        currentRateLeft.innerText = `1 ${currencyFrom.innerText} = ${curRate.toFixed(4)} ${secondCurrency}`;
+        let rate = 1 / curRate;
+        currentRateRight.innerText = `1 ${secondCurrency} = ${rate.toFixed(4)} ${firstCurrency}`;
+        })
+        .catch((err) => {
+          alert("Нет сети!", err);
+        })
       };
-      currentRateLeft.innerText = `1 ${currencyFrom.innerText} = ${curRate} ${secondCurrency}`;
     });
     });
 
@@ -110,10 +124,18 @@ currencyButtonTo.forEach((currencyTo) => {
           break
       }
       if (firstCurrency === secondCurrency) {
-        inputBuy.value = inputSell.value;
+        inputBuy.value = Number(inputSell.value).toFixed(4);
+        currentRateRight.innerText = `1 ${currencyTo.innerText} = 1 ${firstCurrency}`;
+        currentRateLeft.innerText = `1 ${firstCurrency} = 1 ${secondCurrency}`;
       } else {
-        converter(firstCurrency, secondCurrency);
+        converter(firstCurrency, secondCurrency).then(() => {
+        let rate = 1 / curRate;
+        currentRateRight.innerText = `1 ${currencyTo.innerText} = ${rate.toFixed(4)} ${firstCurrency}`;
+        currentRateLeft.innerText = `1 ${firstCurrency} = ${curRate.toFixed(4)} ${secondCurrency}`;
+        })
+        .catch((err) => {
+          alert("Нет сети!", err);
+        })
       };
-      currentRateRight.innerText = `1 ${currencyTo.innerText} = ${1 / curRate} ${firstCurrency}`; //неверно
     });
   })
